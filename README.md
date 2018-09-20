@@ -13,7 +13,7 @@ To see the available versions/tags, please visit the appropriate pages on Docker
 * [Bitcoin Unlimited](https://hub.docker.com/r/zquestz/bitcoin-unlimited/)
 * [Bitcoin XT](https://hub.docker.com/r/zquestz/bitcoin-xt/)
 
-### Usage
+### Usage (BCH full nodes)
 
 To run the latest version of Bitcoin ABC:
 
@@ -56,6 +56,21 @@ To stop and restart a running container:
 ```
 $ docker stop bitcoind
 $ docker start bitcoind
+```
+
+### Usage (rest.bitcoin.com)
+To run rest.bitcoin.com, update the environment variables below and run:
+```
+$ docker run -d \
+--publish 5000:5000 \
+--env BITCOINCOM_BASEURL=https://bch-insight.bitpay.com/api/ \
+--env RPC_BASEURL=http://127.0.0.1:8332/ \
+--env RPC_USERNAME=rpcUsername \
+--env RPC_PASSWORD=rpcPassword \
+--env ZEROMQ_PORT=28332 \
+--env ZEROMQ_URL=127.0.0.1 \
+--env NETWORK=mainnet \
+spendbch/rest.bitcoin.com:1.6.0
 ```
 
 ### Configuring Bitcoin
