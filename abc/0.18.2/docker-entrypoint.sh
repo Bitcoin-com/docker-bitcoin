@@ -7,9 +7,14 @@ if [[ "$1" == "bitcoin-cli" || "$1" == "bitcoin-tx" || "$1" == "bitcoind" || "$1
 	if [[ ! -s "$BITCOIN_DATA/bitcoin.conf" ]]; then
 		cat <<-EOF > "$BITCOIN_DATA/bitcoin.conf"
 		printtoconsole=1
-		rpcallowip=::/0
+		server=1
 		rpcpassword=${BITCOIN_RPC_PASSWORD:-password}
 		rpcuser=${BITCOIN_RPC_USER:-bitcoin}
+		# Enable zeromq for real-time data
+		zmqpubrawtx=tcp://127.0.0.1:28332
+		zmqpubrawblock=tcp://127.0.0.1:28332
+		zmqpubhashtx=tcp://127.0.0.1:28332
+		zmqpubhashblock=tcp://127.0.0.1:28332
 		EOF
 		chown bitcoin:bitcoin "$BITCOIN_DATA/bitcoin.conf"
 	fi
