@@ -8,6 +8,7 @@ if [[ "$1" == "bitcoin-cli" || "$1" == "bitcoin-tx" || "$1" == "bitcoind" || "$1
 		cat <<-EOF > "$BITCOIN_DATA/bitcoin.conf"
 		printtoconsole=1
 		server=1
+		txindex=1
 		rpcpassword=${BITCOIN_RPC_PASSWORD:-password}
 		rpcuser=${BITCOIN_RPC_USER:-bitcoin}
 		# Enable zeromq for real-time data
