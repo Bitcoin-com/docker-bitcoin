@@ -1,0 +1,10 @@
+{
+  "apps": [
+      {
+          "name": "rest",
+          "script": "npm",
+	  "args": "start",
+          "max_restarts": 20
+      }
+  ]
+}
